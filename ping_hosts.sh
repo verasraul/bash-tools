@@ -18,7 +18,7 @@ input_file="$1"
 while read -r host; do
     # Check if the host name can be resolved
     if ! ping -c 1 "$host" &>/dev/null; then
-        echo "$host: Unknown Host"
+        echo "$host: Host Offline"
     else
         # Perform ping test three times
         if ping -c 3 "$host" &>/dev/null; then
