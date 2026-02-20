@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for i in $(cat bcgen.txt | awk '{print $1}' ); do {
+for i in $(cat host.txt | awk '{print $1}' ); do {
 conf_fqdn=$i
 conf_ip=$(host $i | awk '{print $4}')
 echo "object Host \"$conf_fqdn\" {
