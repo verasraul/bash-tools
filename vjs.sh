@@ -19,7 +19,7 @@ get_files(){
     curl -O https://raw.githubusercontent.com/verasraul/vanillaJS-boilerplate/refs/heads/main/script.js
 }
 change_perms="chmod +x index.html script.js style.css"
-change_title(){
+change_pj_title(){
     sed -i "" "s/Boilerplate Project Files/$project_title/g" index.html
 }
 
@@ -37,5 +37,5 @@ else
     $cd_dir
     get_files
     $change_perms
-    change_title
+    change_pj_title
 fi
