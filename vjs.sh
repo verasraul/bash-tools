@@ -31,11 +31,12 @@ elif [[ $dir_name ]] && [[ ! $project_title ]]; then
     $cd_dir
     get_files
     $change_perms
-    # exit 0
+    exit 0
 else
     $make_dir
     $cd_dir
     get_files
     $change_perms
     change_pj_title
+    exit 0
 fi
