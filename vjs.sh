@@ -14,6 +14,7 @@ done
 make_dir="mkdir -p $dir_name"
 cd_dir="cd $dir_name"
 get_files(){
+    curl -O https://raw.githubusercontent.com/verasraul/vanillaJS-boilerplate/refs/heads/main/.gitignore
     curl -O https://raw.githubusercontent.com/verasraul/vanillaJS-boilerplate/refs/heads/main/index.html
     curl -O https://raw.githubusercontent.com/verasraul/vanillaJS-boilerplate/refs/heads/main/style.css 
     curl -O https://raw.githubusercontent.com/verasraul/vanillaJS-boilerplate/refs/heads/main/script.js
