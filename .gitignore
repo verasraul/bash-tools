@@ -62,8 +62,13 @@ ipython_config.py
 # pyflow
 __pypackages__/
 
-# Environment
+# Environment Variable Files
 .env
+*.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
 .venv
 env/
 venv/
@@ -119,18 +124,6 @@ GitHub.sublime-settings
 
 # production
 /build
-
-# misc
-.DS_Store
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # heroku ignores
 *.orig
@@ -210,13 +203,6 @@ web_modules/
 
 # Yarn Integrity file
 .yarn-integrity
-
-# dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
