@@ -17,25 +17,25 @@ if [ ! -f "$PASSFILE" ]; then
 fi
 
 while IFS= read -r host || [ -n "$host" ]; do
-    host="${host//$'\r'/}"
+    # skip blank lines
     [ -z "$host" ] && continue
 
     echo "🔗 Trying $USER1@$host..."
-    sshpass -f "$PASSFILE" ssh -tt \
+    sshpass -f "$PASSFILE" ssh \
         -o ConnectTimeout=5 \
         -o StrictHostKeyChecking=no \
         -o PreferredAuthentications=password \
         -o PubkeyAuthentication=no \
-        "$USER1@$host" "$COMMAND" < /dev/null
+        -t "$USER1@$host" "$COMMAND"
 
     if [ $? -ne 0 ]; then
         echo "❌ Failed with $USER1, retrying with $USER2@$host..."
-        sshpass -f "$PASSFILE" ssh -tt \
+        sshpass -f "$PASSFILE" ssh \
             -o ConnectTimeout=5 \
             -o StrictHostKeyChecking=no \
             -o PreferredAuthentications=password \
             -o PubkeyAuthentication=no \
-            "$USER2@$host" "$COMMAND" < /dev/null
+            -t "$USER2@$host" "$COMMAND"
 
         if [ $? -ne 0 ]; then
             echo "❌ Both attempts failed for $host"
