@@ -1,0 +1,23 @@
+function get_ssh_key_files() {
+  local list=
+  for keyfile in $(/usr/bin/egrep -d skip -c 'BEGIN.+PRIVATE KEY' ~/.ssh/* | grep :1 | cut -d: -f1); do
+    ssh-keygen -lf ${keyfile}.pub &>/dev/null && list="${list} $(basename ${keyfile})"
+  done
+  echo $list
+}
+
+# set up public key using above function
+export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
+eval `keychain --noask --eval --agents gpg,ssh --inherit any --timeout 28800 $(get_ssh_key_files)`
+export GPG_TTY=`tty`
+export SSH_USER=rveras1
+
+
+###unpreserve users###
+alias p='ssh -t mgmt02.c01.inf.gen.adm2.util.mlbam.net "\cd /opt/users/; sudo ./unPreserve.sh "\'
+###Add AD users###
+alias a='ssh -t mgmt02.c01.inf.gen.adm2.util.mlbam.net "\cd /opt/users/; sudo ./add_user_to_IDM_from_AD.sh "\'
+###add ext users###
+alias ex='ssh -t mgmt02.c01.inf.gen.adm2.util.mlbam.net "\cd /opt/users/; sudo ./add_user_to_IDM_as_EXT.sh "\'
+###Email change###
+alias e='ssh -t mgmt02.c01.inf.gen.adm2.util.mlbam.net "\cd /opt/users/; sudo ./change_EXT_user_email.sh "\'
