@@ -24,11 +24,12 @@ object Zone "{hostname}" {{
 def mapMidtier(dc):
   zone = None
   zones = {
-    'adm2-dmz': [ 'atl1', 'dfw1', 'ewr1', 'jfk3', 'lax1', 'ord1', 'sea1' ],
-    'adm3-dmz': [ 'ams1', 'arn1', 'fra1', 'lhr1', 'mad1' ],
-    'adm4-dmz': 'mrs1',
-    'adm6-dmz': [ 'sin1', 'syd1'],
-    'adm7-dmz': [ 'bog1', 'eze1', 'gru1', 'mia1', 'scl1' ],
+    'adm2-dmz': [ 'adm1', 'adm2', 'atl1', 'clt1', 'dfw1', 'ewr1', 'iad1', 'lax1', 'mia1', 'ord1', 'sea1' ],
+    'adm3-dmz': [ 'adm3', 'ams1', 'fra1', 'lhr1', 'mad1' ],
+    'adm4-dmz': [ 'adm4', 'arn1', 'mrs1' ],
+    'adm5-dmz': [ 'adm5', 'icn1' ],
+    'adm6-dmz': [ 'adm6', 'hnd2', 'sin1', 'syd1' ],
+    'adm7-dmz': [ 'adm7', 'bog1', 'eze2', 'gru1', 'scl1' ],
   }
   for key in zones.keys():
     for value in zones[key]:
