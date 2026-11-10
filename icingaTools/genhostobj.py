@@ -17,7 +17,7 @@ object Endpoint "{hostname}" {{
 }}
 object Zone "{hostname}" {{
   endpoints = [ "{hostname}" ]
-  parent = "{parent}"
+  parent = "satellite2"
 }}'''.format(hostname=fqdn, address=ipv4, facility=dc, owner=owner, template=template, parent=parent)
     return hostTemp
 
